@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -37,16 +38,18 @@ public class CuentaRepoImpl implements ICuentaRepository {
 
 	@Override
 	public void eliminarPorNumero(String numero) {
-//		Query query = this.entityManager.createQuery("DELETE FROM CuentaBancaria c WHERE c.nombre =:datoNombre");
-//		query.setParameter("datoNombre", numero);
-//		query.executeUpdate();
-		
-		Query query = this.entityManager.createNativeQuery("DELETE FROM cuentabancaria WHERE cuenta_numero = :datoNum", CuentaBancaria.class);
-		query.setParameter("datoNum", numero);
+		Query query = this.entityManager.createQuery("DELETE FROM CuentaBancaria c WHERE c.numero =:datoNumero");
+		query.setParameter("datoNumero", numero);
 		query.executeUpdate();
 	}
 
-	
+	@Override
+	public int actualizarSaldo(BigDecimal saldo) {
+		Query query = this.entityManager.createQuery("UPDATE CuentaBancaria c SET c.saldo =: datoSaldo WHERE c.saldo < 100");
+		query.setParameter("datoSaldo", saldo);
+		return query.executeUpdate();
+	}
+
 	
 	
 	

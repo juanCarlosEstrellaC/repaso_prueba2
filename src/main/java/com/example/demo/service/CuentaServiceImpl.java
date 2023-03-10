@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -40,5 +41,10 @@ public class CuentaServiceImpl implements ICuentaService {
 		} else {
 			this.iCuentaRepository.eliminarPorNumero(numero);
 		}
+	}
+
+	@Override
+	public int actualizarSaldo(BigDecimal saldo) {
+		return this.iCuentaRepository.actualizarSaldo(saldo);
 	}
 }

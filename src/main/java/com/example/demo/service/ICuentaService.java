@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.example.demo.modelo.CuentaBancaria;
@@ -10,5 +11,6 @@ public interface ICuentaService {
 	public CuentaBancaria encontrar(String id);
 	public List<CuentaBancaria> encontrarTodas();
 	public void eliminarPorNumero(String numero);
-	
+	public int actualizarSaldo(BigDecimal saldo);
+
 }
